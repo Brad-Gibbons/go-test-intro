@@ -1,15 +1,31 @@
 package main 
 import "fmt"
 
-const englishHelloPrefix = "Hello, "
 
-func Hello(name string) string {
+const englishHelloPrefix = "Hello, "
+const spanishHelloPrefix = "Hola, "
+const frenchHelloPrefix = "Bonjour, "
+const chineseHelloPrefix = "Ni hao, "
+
+func Hello(name string, language string) string {
 	if name == "" {
 		name = "World"
 	}
-	return englishHelloPrefix + name
+
+	prefix := englishHelloPrefix
+
+	switch language {
+	case "French":
+		prefix = frenchHelloPrefix
+	case "Spanish":
+		prefix = spanishHelloPrefix
+	case "Chinese":
+		prefix = chineseHelloPrefix
+	}
+
+	return prefix + name
 }
 
 func main() {
-	fmt.Println( Hello("world"))
+	fmt.Println( Hello("world", ""))
 }
